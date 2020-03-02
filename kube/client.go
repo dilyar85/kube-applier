@@ -142,6 +142,7 @@ func (c *Client) Apply(path string) (cmd, output string, err error) {
 	stdout, err := exec.Command(args[0], args[1:]...).CombinedOutput()
 	if err != nil {
 		err = fmt.Errorf("Error: %v", err)
+		_ = fmt.Errorf("STDOUT: %s", string(stdout))
 	}
 	return cmd, string(stdout), err
 }
